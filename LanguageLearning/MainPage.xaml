@@ -1,0 +1,161 @@
+<Page
+    x:Class="LanguageLearning.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LanguageLearning"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    UseSystemFocusVisuals="True"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Padding="48,24">
+            <TextBlock Text="Sprachen Lernen"
+                       FontSize="32"
+                       FontWeight="SemiBold"
+                       VerticalAlignment="Center"
+                       Margin="0,0,32,0" />
+            <ComboBox x:Name="LanguageSelector"
+                      Header="Sprachpaar"
+                      SelectedIndex="0"
+                      SelectionChanged="LanguageSelector_SelectionChanged"
+                      MinWidth="240"
+                      Margin="0,0,16,0">
+                <ComboBoxItem Content="Englisch - Deutsch" />
+                <ComboBoxItem Content="Spanisch - Deutsch" />
+                <ComboBoxItem Content="Französisch - Deutsch" />
+            </ComboBox>
+            <ComboBox x:Name="ModeSelector"
+                      Header="Modus"
+                      SelectedIndex="0"
+                      SelectionChanged="ModeSelector_SelectionChanged"
+                      MinWidth="180">
+                <ComboBoxItem Content="Karteikarten" />
+                <ComboBoxItem Content="Quiz" />
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel x:Name="FlashcardPanel"
+                    Grid.Row="1"
+                    Padding="48"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                    CornerRadius="8"
+                    Padding="64"
+                    MinWidth="700"
+                    MinHeight="240"
+                    Margin="0,0,0,24">
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock x:Name="CardWord"
+                               FontSize="48"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,16" />
+                    <TextBlock x:Name="CardTranslation"
+                               FontSize="36"
+                               Foreground="Gray"
+                               HorizontalAlignment="Center"
+                               Visibility="Collapsed" />
+                </StackPanel>
+            </Border>
+            <TextBlock x:Name="ProgressText"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,24" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button x:Name="FlipButton"
+                        Content="Übersetzung anzeigen"
+                        Click="FlipButton_Click"
+                        MinWidth="220"
+                        MinHeight="64"
+                        Margin="0,0,12,0"
+                        XYFocusRight="CorrectButton" />
+                <Button x:Name="CorrectButton"
+                        Content="Richtig"
+                        Click="CorrectButton_Click"
+                        MinWidth="160"
+                        MinHeight="64"
+                        Margin="0,0,12,0"
+                        XYFocusLeft="FlipButton"
+                        XYFocusRight="IncorrectButton" />
+                <Button x:Name="IncorrectButton"
+                        Content="Falsch"
+                        Click="IncorrectButton_Click"
+                        MinWidth="160"
+                        MinHeight="64"
+                        Margin="0,0,12,0"
+                        XYFocusLeft="CorrectButton"
+                        XYFocusRight="NextCardButton" />
+                <Button x:Name="NextCardButton"
+                        Content="Nächste"
+                        Click="NextCardButton_Click"
+                        MinWidth="160"
+                        MinHeight="64"
+                        XYFocusLeft="IncorrectButton" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel x:Name="QuizPanel"
+                    Grid.Row="1"
+                    Padding="48"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed">
+            <TextBlock x:Name="QuizQuestion"
+                       FontSize="48"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,12" />
+            <TextBlock x:Name="QuizScore"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,24" />
+            <StackPanel MaxWidth="600"
+                        Margin="0,0,0,24">
+                <Button x:Name="Answer1"
+                        Click="Answer_Click"
+                        MinHeight="64"
+                        FontSize="22"
+                        HorizontalAlignment="Stretch"
+                        Margin="0,0,0,12" />
+                <Button x:Name="Answer2"
+                        Click="Answer_Click"
+                        MinHeight="64"
+                        FontSize="22"
+                        HorizontalAlignment="Stretch"
+                        Margin="0,0,0,12" />
+                <Button x:Name="Answer3"
+                        Click="Answer_Click"
+                        MinHeight="64"
+                        FontSize="22"
+                        HorizontalAlignment="Stretch"
+                        Margin="0,0,0,12" />
+                <Button x:Name="Answer4"
+                        Click="Answer_Click"
+                        MinHeight="64"
+                        FontSize="22"
+                        HorizontalAlignment="Stretch" />
+            </StackPanel>
+            <TextBlock x:Name="QuizFeedback"
+                       FontSize="22"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,16" />
+            <Button x:Name="NextQuestion"
+                    Content="Nächste Frage"
+                    Click="NextQuestion_Click"
+                    MinWidth="220"
+                    MinHeight="64"
+                    HorizontalAlignment="Center"
+                    Visibility="Collapsed" />
+        </StackPanel>
+    </Grid>
+</Page>
