@@ -1,21 +1,37 @@
-# Example: Sprachen Lernen
+# Language Learning
 
-Dies ist eine Sprachlern-Anwendung, die mit UWP-Technologie auf der Xbox One läuft. Die App bietet einen Karteikartenmodus zum Vokabellernen sowie einen Quizmodus mit Multiple-Choice-Fragen für die Sprachpaare Englisch-Deutsch, Spanisch-Deutsch und Französisch-Deutsch.
+Sprachlern-App mit Karteikarten und Quiz. Das Projekt ist als überschaubares Lernbeispiel für C#, UWP und die Bereitstellung auf einer Xbox One gedacht.
 
-## Getting Started
+## Tutorial
 
-Bitte folge unserem Tutorial, um eine eigene Sprachlern-Anwendung zu erstellen.
+Die vollständige Schrittfolge mit Hinweisen zu Visual Studio, Developer Mode und Gamepad-Eingabe steht im [XboxDev-Tutorial](https://xboxdev.com/tutorials/xbox-uwp-example-language-learning/).
 
-## Built with
+## Voraussetzungen
 
-* [Visual Studio](https://visualstudio.microsoft.com/) - C# Editor from Microsoft
-* [Xbox One](https://afflnk.microsoft.com/c/1256010/476314/7806/) - Testing the application
-* [Microsoft.NETCore.UniversalWindowsPlatform](https://www.nuget.org/packages/Microsoft.NETCore.UniversalWindowsPlatform/) - UWP .NET Core platform support
+- Windows mit Visual Studio und installierter **Universal Windows Platform development**-Workload
+- Eine Xbox One im Developer Mode oder der UWP-Simulator
+- Visual Studio-Konfiguration **Debug**, Plattform **x64**
 
-## Contributors
+## Projekt öffnen und starten
 
-See the [list of contributors](https://github.com/XboxDevCom/example-language-learning/contributors) who participated in this project.
+1. Repository klonen oder als ZIP laden: [example-language-learning](https://github.com/XboxDevCom/example-language-learning).
+2. **LanguageLearning.sln** in Visual Studio öffnen.
+3. **x64** als Plattform auswählen. Für lokale Tests genügt der Simulator; für die Konsole **Remote Machine** wählen, die Xbox-IP eintragen und den Pairing-PIN aus dem Developer Portal bestätigen.
+4. Mit **Erstellen** kompilieren und mit **Bereitstellen** auf Simulator oder Konsole starten.
+5. Änderungen zunächst an einer kleinen Oberfläche oder einer einzelnen Spielregel testen. Das erleichtert die Fehlersuche auf dem TV-Layout.
 
-## License
+## Projektaufbau
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+Der zentrale Quellcode liegt im Ordner **LanguageLearning/**. Die Solution bündelt das UWP-Projekt und die benötigten Assets. Öffne zuerst `MainPage.xaml` beziehungsweise die dort verwendete Startseite und verfolge anschließend die zugehörige C#-Code-behind-Datei. So lässt sich nachvollziehen, wie Oberfläche, Eingabe und Zustand zusammenspielen.
+
+### Gute erste Änderungen
+
+Zeigt mehrere Lernmodi und die Trennung von Vokabular, Oberfläche und Eingabe. Ändere danach Farben, Texte oder ein Asset und prüfe die Bereitstellung erneut. Bei Spielen sind zusätzlich Fokusführung, Controller-Eingaben und ein lesbares Layout aus größerer Entfernung wichtig.
+
+## Hinweise
+
+Die Beispiele stammen aus der UWP- und Xbox-One-Entwicklungsphase. Für neue Projekte sollte geprüft werden, ob Windows App SDK oder Xbox GDK besser passt. Das Repository zeigt bewusst einen kleinen, nachvollziehbaren Einstieg und ist kein fertiges Produkt.
+
+## Lizenz
+
+Die Lizenzbedingungen stehen in der Datei [LICENSE](LICENSE).
